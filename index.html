@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Mini Project</title>
 </head>
@@ -26,7 +27,8 @@
 
         <section id="home" class="">
             <div class="mt-10 ml-20">
-                <h1>Hi, Welcome to Taxidi</h1>
+                <h2 id="greeting"></h2>
+                <h1>Welcome to Taxidi</h1>
                 <br>
                 <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque quae architecto fugiat minima
                     excepturi
@@ -41,45 +43,45 @@
 
         </section>
         <section class="bg-[#FFFDD0]">
-            <div class="mt-10 ml-20">
-                <h1 id="about_us">About Us</h1>
-                <div class="flex justify-center">
+            <div class="mt-10 ml-20 py-10">
+                <h1 id="about_us" class="flex justify-center mb-6">Our Company</h1>
+                <div class="flex justify-evenly">
                     <div class="m-4">
-                        <img class="h-60 w-80 rounded-lg"
+                        <img class="h-60 w-60 rounded-[50%]"
                             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFyaXN8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
                             alt="">
                         <h3>
-                            Talia
+                            CO-Founder
                         </h3>
                         <p>
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem."
+                            Chris
                         </p>
 
                     </div>
                     <div class="m-4">
-                        <img class="h-60 w-80 rounded-lg"
+                        <img class="h-60 w-60 rounded-[50%]"
                             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFyaXN8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
                             alt="">
                         <h3>
-                            Talia
+                            CEO
                         </h3>
                         <p>
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem."
+                            John
                         </p>
                     </div>
                     <div class="m-4">
-                        <img class="h-60 w-80 rounded-lg"
+                        <img class="h-60 w-60 rounded-[50%]"
                             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFyaXN8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
                             alt="">
                         <h3>
-                            Talia
+                            General Manager
                         </h3>
                         <p>
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem."
+                            Steven
                         </p>
 
                     </div>
-            </div>
+                </div>
         </section>
         <section>
             <div class="mt-10 ml-20">
@@ -115,6 +117,7 @@
                         <h3>
                             Talia
                         </h3>
+
                         <p>
                             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem."
                         </p>
@@ -123,34 +126,79 @@
                 </div>
             </div>
         </section>
-        <section id="contact_us" class="bg-[#FFFDD0]">
-            <div class="mt-10 ml-20">
-                <h1>Contact Us</h1>
-                <div class="py-10 ">
+        <section id="contact_us" class="bg-[#FFFDD0] ">
+            <h1 class="mt-10 ml-20 py-10">Contact Us</h1>
+            <div class="flex justify-evenly ml-20 mb-10">
+                <div class="">
                     <h4>Send us massage</h4>
-                    <div>
-                        <form action="">
+                    <div class="flex justify-between">
+                        <form id="myForm" action="" onsubmit="InputMessage(event)">
                             <label for="name">Name</label><br>
-                            <input class="border-1 border-black rounded-md w-96 h-10" type="text" id="name"
-                                name="name"><br><br>
+                            <input class="border-1 border-black rounded-md w-96 h-10" type="text" id="name" name="name"
+                                required><br><br>
                             <label for="email">Email</label><br>
                             <input class="border-1 border-black rounded-md w-96 h-10" type="email" id="email"
-                                name="email"><br><br>
+                                name="email" required><br><br>
                             <label for="message">Message</label><br>
-                            <textarea class="border-1 border-black rounded-md w-96 h-32" id="message"
-                                name="message"></textarea><br><br>
+                            <textarea class="border-1 border-black rounded-md w-96 h-32" id="message" name="message"
+                                required></textarea><br><br>
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                 type="submit">Send</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                type="button" onclick="ResetForm()">Reset</button>
                         </form>
                     </div>
                 </div>
-            </div>
+                <div class="">
+                    <div id="message-display"
+                        class="border-1 border-black rounded-md w-96 h-76 mt-12 p-4 overflow-auto">
+                        <!-- Display submitted messages here -->
+                        <h4>Your Message</h4>
+                        <h6 id="showname">Name</h6>
+                        <h6 id="showemail">Email</h6>
+                        <h6 id="showmessage">Message</h6>
+
+                    </div>
+
+                </div>
+                <div class="">
+                    <div id="message-display" class="w-90 h-96 p-2 ml-6 overflow-auto">
+                        <!-- Display submitted messages here -->
+                        <h4>You Can Contact Us</h4>
+                        <div class="mt-4 flex justify-start items-center">
+                            <img class="h-10 w-10 rounded-[50%]"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0V-w0eR6Ptn9T96pDADf8h7xTDPAPBKa_TA&s"
+                                alt="">
+                            <span class="ml-4">+384972364876</span>
+                        </div>
+                        <div class="mt-4 flex justify-start items-center">
+                            <img class="h-10 w-10 rounded-[50%]"
+                                src="https://img.freepik.com/free-vector/instagram-logo_1199-122.jpg?semt=ais_hybrid&w=740&q=80"
+                                alt="">
+                            <span class="ml-4">@taxidi_travel</span>
+                        </div>
+                        <div class="mt-4 flex justify-start items-center">
+                            <img class="h-10 w-10 rounded-[50%]"
+                                src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?semt=ais_hybrid&w=740&q=80"
+                                alt="">
+                            <span class="ml-4">@taxidi_travel</span>
+                        </div>
+                        <div class="mt-4 flex justify-start items-center">
+                            <img class="h-10 w-10 rounded-[50%]"
+                                src="https://abovethelaw.com/wp-content/uploads/sites/4/2016/01/linkedin-logo-300x300.png"
+                                alt="">
+                            <span class="ml-4">taxidi</span>
+                        </div>
+                    </div>
+
+                </div>
         </section>
 
     </main>
     <footer>
-
+            © 2025 Taxidi - Made by DewiOkta
     </footer>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
